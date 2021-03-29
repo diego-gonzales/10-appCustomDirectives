@@ -21,8 +21,8 @@ export class ErrorMsgDirective implements OnInit, OnChanges {
   };
 
   @Input() set invalid( value: boolean ) {
-    value ? this.el.nativeElement.hidden = false
-          : this.el.nativeElement.hidden = true;
+    value ? this.el.nativeElement.hidden = false // muestra el elemento HTML
+          : this.el.nativeElement.hidden = true; // oculta el elemento HTML
   };
   
 
