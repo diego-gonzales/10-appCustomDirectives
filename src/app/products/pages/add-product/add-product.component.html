@@ -1,0 +1,69 @@
+<h1>Add Product</h1>
+<hr>
+
+<div class="row">
+    <div class="col">
+
+        <form [formGroup]="myFormcito">
+            <div class="row g-3 align-items-center mb-3">
+                
+                <div class="col-auto">
+                    <label class="form-label">Product Name:</label>
+                </div>
+                <div class="col-auto">
+                    <input type="text"
+                           class="form-control"
+                           placeholder="Name"
+                           formControlName="product_name">
+                </div>
+                <div class="col-auto">
+                    <span appErrorMsg
+                          [mesaggeError]="mesagge"
+                          [mesaggeColor]="color"
+                          [invalid]="existError('product_name')">
+                    </span>
+                </div>
+
+            </div>
+
+            <div class="row mt-3">
+                <div class="col">
+                    <button class="btn btn-primary mx-2"
+                            type="button"
+                            (click)="changeMesagge()">
+                        Change Mesagge
+                    </button>
+                    <button class="btn btn-primary"
+                            type="button"
+                            (click)="changeColor()">
+                        Change Color
+                    </button>
+                </div>
+            </div>
+
+        </form>
+
+    </div>
+</div>
+
+
+<h3 class="mt-5">Form</h3>
+<pre>{{ myFormcito.valid }}</pre>
+<pre>{{ myFormcito.value | json }}</pre>
+
+
+
+<!-- Directiva estructural personalizada que nos permite mostrar u ocultar nuestro div sino queremos hacerlo solo con 'hidden' 
+propio de los elementos HTML, Fernando lo hace asi con la propiedad 'hidden de un HTML', pero esta tambien es una manera valida-->
+<h3 class="mt-5">Custom Structural Directive</h3>
+<hr>
+
+<div class="row"
+     *appCustomIf="myFormcito.valid">
+
+    <div class="col">
+        <div class="alert alert-primary">
+            It's OK!!!
+        </div>
+    </div>
+</div>
